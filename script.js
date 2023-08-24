@@ -36,12 +36,14 @@ const perguntas = [
         ]
     },
     {
-        pergunta: "",
+        pergunta: "A que temperatura a água ferve?",
         resposta: [
-            {text: "", correto: false},
-            {text: "", correto: false},
-            {text: "", correto: false},
-            {text: "", correto: false},
+            {text: "100 ºC", correto: true},
+            {text: "180 ºC", correto: false},
+            {text: "-10 ºC", correto: false},
+            {text: "0 ºC", correto: false},
         ]
     }
-]
+];
+
+const elementoPergunta = document.getElementById("pergunta")
