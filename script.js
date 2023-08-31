@@ -47,3 +47,5 @@ const perguntas = [
 ];
 
 const elementoPergunta = document.getElementById("pergunta")
+const botoes = document.getElementById("perguntas")
+const botes = document.getElementById("perguntas")
