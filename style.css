@@ -26,7 +26,7 @@ body {
     background-color: #e6e9ed;
     padding: 50px;
     border-radius: 30px;
-    margin: 100px 400px;
+    /* margin: 100px 400px; */
 }
 
 .botoes {
@@ -34,8 +34,7 @@ body {
     margin-top: 25px;
     padding: 15px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
+    width: 100%;
     margin-right: 10px;
     font-weight: 500;
     background-color: #e6e9ed;
@@ -51,4 +50,8 @@ body {
 
 .icone {
     margin-right: 15px;
+}
+
+#proximo {
+    display: none;
 }

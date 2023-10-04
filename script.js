@@ -46,6 +46,42 @@ const perguntas = [
     }
 ];
 
-const elementoPergunta = document.getElementById("pergunta")
-const botoes = document.getElementById("perguntas")
-const botes = document.getElementById("perguntas")
+const elementoPergunta = document.getElementById("pergunta");
+const questoes = document.getElementById("perguntas");
+const proximo = document.getElementById("proximo");
+
+let mudandoPerguntaIndex = 0; 
+let score = 0;
+
+function comecaQuiz() {
+    mudandoPerguntaIndex = 0;
+    score = 0;
+    proximo.innerHTML = "Próximo";
+    mostrarPerguntas();
+}
+
+function mostrarPerguntas() {
+    resetaTudo();
+    let mudandoPergunta = perguntas[mudandoPerguntaIndex];
+    let semPergunta = mudandoPerguntaIndex + 1;
+    elementoPergunta.innerHTML = semPergunta + ". "+ mudandoPergunta.pergunta;
+
+    mudandoPergunta.resposta.forEach(respostas => {
+        const botoes = document.createElement("button");
+        botoes.innerHTML = respostas.text;
+        botoes.classList.add("botoes");
+        questoes.appendChild(botoes);
+    });
+}
+
+function resetaTudo(){
+    proximo.style.display = "none";
+    while(questoes.firstChild){
+        questoes.removeChild(questoes.firstChild)
+    }
+}
+
+
+
+
+comecaQuiz();
