@@ -60,28 +60,74 @@ function comecaQuiz() {
     mostrarPerguntas();
 }
 
+let icone = '<div class="icone"><i class="fa-solid fa-diamond"></i></div>'
+
 function mostrarPerguntas() {
     resetaTudo();
     let mudandoPergunta = perguntas[mudandoPerguntaIndex];
     let semPergunta = mudandoPerguntaIndex + 1;
     elementoPergunta.innerHTML = semPergunta + ". "+ mudandoPergunta.pergunta;
+    
 
     mudandoPergunta.resposta.forEach(respostas => {
         const botoes = document.createElement("button");
         botoes.innerHTML = respostas.text;
         botoes.classList.add("botoes");
         questoes.appendChild(botoes);
+        if(respostas.correto) {
+            botoes.dataset.correto = respostas.correto;
+        }
+        botoes.addEventListener("click", selecionaResposta);
     });
 }
 
 function resetaTudo(){
     proximo.style.display = "none";
     while(questoes.firstChild){
-        questoes.removeChild(questoes.firstChild)
+        questoes.removeChild(questoes.firstChild);
     }
 }
 
+function selecionaResposta(e){
+    const selecionaBtn = e.target;
+    const eCorreto = selecionaBtn.dataset.correto === "true";
+    if(eCorreto){
+        selecionaBtn.classList.add("correto");
+        score++;
+    }else{
+        selecionaBtn.classList.add("incorreto");
+    }
+    Array.from(questoes.children).forEach(botoes => {
+        if(botoes.dataset.correto === "true"){
+            botoes.classList.add("correto");
+        }
+        botoes.disabled = true;
+    });
+    proximo.style.display = "block";
+}
 
+function mostrarScore(){
+    resetaTudo();
+    elementoPergunta.innerHTML = `Seu score ${score} de ${perguntas.length}!`;
+    proximo.innerHTML = "Jogue Novamente";
+    proximo.style.display = "Block";
+}
 
+function tocarProximoBotao(){
+    mudandoPerguntaIndex++;
+    if(mudandoPerguntaIndex < perguntas.length){
+        mostrarPerguntas();
+    }else{
+        mostrarScore();
+    }
+}
+
+proximo.addEventListener("click", ()=>{
+    if(mudandoPerguntaIndex < perguntas.length){
+        tocarProximoBotao();
+    }else{
+        comecaQuiz();
+    }
+});
 
 comecaQuiz();

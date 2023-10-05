@@ -26,7 +26,7 @@ body {
     background-color: #e6e9ed;
     padding: 50px;
     border-radius: 30px;
-    /* margin: 100px 400px; */
+    margin: 100px 400px;
 }
 
 .botoes {
@@ -43,9 +43,13 @@ body {
     cursor: pointer;
 }
 
-.botoes:hover {
+.botoes:hover:not([disable]) {
     background: rgba(0, 3, 13, 0.30);
-    transition: 0.2s;
+    transition: 0.3s;
+}
+
+.botoes:disabled {
+    cursor: no-drop;
 }
 
 .icone {
@@ -54,4 +58,12 @@ body {
 
 #proximo {
     display: none;
+}
+
+.correto {
+    background: #9aeabc;
+}
+
+.incorreto {
+    background: #ff9393;
 }
