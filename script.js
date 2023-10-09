@@ -58,13 +58,15 @@ const proximo = document.getElementById("proximo");
 let mudandoPerguntaIndex = 0; 
 let score = 0;
 const imagemPergunta = document.getElementById("imagemDif");
-
+let erros = 0
 
 function comecaQuiz() {
     mudandoPerguntaIndex = 0;
     score = 0;
     proximo.innerHTML = "Próximo";
     mostrarPerguntas();
+    imagemPergunta.style.display ="block";
+    erros = 0;
 }
 
 
@@ -103,6 +105,7 @@ function selecionaResposta(e){
         score++;
     }else{
         selecionaBtn.classList.add("incorreto");
+        erros++;
     }
     Array.from(questoes.children).forEach(botoes => {
         if(botoes.dataset.correto === "true"){
@@ -116,17 +119,21 @@ function selecionaResposta(e){
 function mostrarScore(){
     resetaTudo();
     elementoPergunta.innerHTML = `Seu score ${score} de ${perguntas.length}!`;
-    imagemPergunta.style.display = "none"
     proximo.innerHTML = "Jogue Novamente";
     proximo.style.display = "Block";
+    imagemPergunta.style.display = "none"
 }
 
 function tocarProximoBotao(){
     mudandoPerguntaIndex++;
     if(mudandoPerguntaIndex < perguntas.length){
         mostrarPerguntas();
-    }else{
-        mostrarScore();
+    }else {
+        if (erros >= 2) {
+            comecaQuiz();
+        }else{
+            mostrarScore();
+        }
     }
 }
 
