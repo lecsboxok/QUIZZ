@@ -14,23 +14,29 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h3 {
+    font-size: 25px;
+}
+
 #main {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.section {
-    display: flex;
+.texto {
+    margin-top: 50px;
+}
 
+#outra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
 }
 
 #imagemDif {
-    width: 200px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+    height: 300px;
 }
 
 
@@ -39,28 +45,21 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #e6e9ed;
-    padding: 50px;
-    border-radius: 30px;
-    margin: 100px 400px;
+    /* background-color: #e6e9ed; */
+    /* margin: 100px 400px; */
 }
 
 .botoes {
-    border: 1px solid;
-    margin-top: 25px;
+    border: 1px solid black;
+    margin-top: 10px;
     padding: 15px;
-    border-radius: 10px;
-    width: 100%;
+    font-size: 20px;
+    width: 700px;
+    height: 100px;
     margin-right: 10px;
-    font-weight: 500;
-    background-color: #e6e9ed;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
 .botoes:hover:not([disable]) {
@@ -76,17 +75,22 @@ body {
     margin-right: 15px;
 }
 
+#perguntas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* 
 #proximo {
     display: none;
     margin-top: 30px;
     background-color: #3bafda;
     padding: 20px 30px;
     user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     cursor: pointer;
-}
+} */
 
 .correto {
     background: #9aeabc;
@@ -96,9 +100,6 @@ body {
     background: #ff9393;
 }
 
-#pergunta {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+.cor-verde {
+    background-color: #00ff00;
 }

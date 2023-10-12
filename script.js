@@ -59,14 +59,17 @@ let mudandoPerguntaIndex = 0;
 let score = 0;
 const imagemPergunta = document.getElementById("imagemDif");
 let erros = 0
+let tentativasErradasPerguntaAtual = 0; // Contador de tentativas erradas para a pergunta atual
+
 
 function comecaQuiz() {
     mudandoPerguntaIndex = 0;
     score = 0;
-    proximo.innerHTML = "Próximo";
+    // proximo.innerHTML = "Próximo";
     mostrarPerguntas();
     imagemPergunta.style.display ="block";
     erros = 0;
+    tentativasErradasPerguntaAtual = 0; // Contador de tentativas erradas para a pergunta atual
 }
 
 
@@ -102,39 +105,62 @@ function selecionaResposta(e){
     const eCorreto = selecionaBtn.dataset.correto === "true";
     if(eCorreto){
         selecionaBtn.classList.add("correto");
-        score++;
+        score = score + 10;
+        Array.from(questoes.children).forEach(botoes => {
+            if(botoes.dataset.correto === "true"){
+                botoes.classList.add("correto");
+            }
+            botoes.disabled = true;
+        });
+        setTimeout(() => {
+            tocarProximoBotao();
+        }, 1800); 
     }else{
         selecionaBtn.classList.add("incorreto");
+        tentativasErradasPerguntaAtual++;
         erros++;
-    }
-    Array.from(questoes.children).forEach(botoes => {
-        if(botoes.dataset.correto === "true"){
-            botoes.classList.add("correto");
+        if (tentativasErradasPerguntaAtual === 1) {
+            // Mostra um alerta na primeira tentativa errada
+            alert("Tentativa errada. Você tem mais uma chance!");
         }
-        botoes.disabled = true;
-    });
-    proximo.style.display = "block";
+
+        if (tentativasErradasPerguntaAtual === 2) {
+            // Mostrar resposta correta e reiniciar o jogo
+            tentativasErradasPerguntaAtual = 0; // Redefinir tentativas para a próxima pergunta
+            Array.from(questoes.children).forEach(botoes => {
+                if(botoes.dataset.correto === "true"){
+                    botoes.classList.add("correto");
+                }
+                botoes.disabled = true;
+            });
+            setTimeout(() => {
+                comecaQuiz();
+            }, 1800); 
+        }
+    }
+    // proximo.style.display = "block";
 }
 
 function mostrarScore(){
     resetaTudo();
-    elementoPergunta.innerHTML = `Seu score ${score} de ${perguntas.length}!`;
-    proximo.innerHTML = "Jogue Novamente";
+    elementoPergunta.innerHTML = `Parabéns! Você conseguiu!`;
+    proximo.innerHTML = "Refazer Quiz";
     proximo.style.display = "Block";
     imagemPergunta.style.display = "none"
 }
 
 function tocarProximoBotao(){
     mudandoPerguntaIndex++;
-    if(mudandoPerguntaIndex < perguntas.length){
-        mostrarPerguntas();
-    }else {
-        if (erros >= 2) {
-            comecaQuiz();
-        }else{
+    if(erros >= 2) {
+        comecaQuiz()
+    } else {
+        if(mudandoPerguntaIndex < perguntas.length){
+            mostrarPerguntas();
+        }else {
             mostrarScore();
         }
     }
+
 }
 
 proximo.addEventListener("click", ()=>{
