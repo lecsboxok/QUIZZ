@@ -14,8 +14,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h3 {
-    font-size: 25px;
+h1 {
+    font-size: 22px;
+
+}
+
+.texto {
+    background-color: white;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+    padding: 30px 0 20px 0;
+    width: 100%;
+    text-align: center;
 }
 
 #main {
@@ -24,15 +33,12 @@ h3 {
     justify-content: center;
 }
 
-.texto {
-    margin-top: 50px;
-}
 
 #outra {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px 0;
+    margin: 25px 0;
 }
 
 #imagemDif {
@@ -63,8 +69,8 @@ h3 {
 }
 
 .botoes:hover:not([disable]) {
-    background: rgba(0, 3, 13, 0.30);
-    transition: 0.3s;
+    background: rgba(0, 3, 13, 0.062);
+    transition: 0.4s;
 }
 
 .botoes:disabled {
@@ -82,24 +88,35 @@ h3 {
     align-items: flex-end;
 }
 
-/* 
+
 #proximo {
-    display: none;
-    margin-top: 30px;
-    background-color: #3bafda;
+    background-color: #D9713B;
     padding: 20px 30px;
-    user-select: none;
     cursor: pointer;
-} */
+}
 
 .correto {
-    background: #9aeabc;
+    background: #71A944;
+    color: white;
 }
 
 .incorreto {
-    background: #ff9393;
+    background: #F23838;
+    color: white;
 }
 
-.cor-verde {
-    background-color: #00ff00;
+.final {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#pontos {
+    background-color: black;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 5px;
 }

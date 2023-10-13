@@ -68,6 +68,8 @@ function comecaQuiz() {
     // proximo.innerHTML = "Próximo";
     mostrarPerguntas();
     imagemPergunta.style.display ="block";
+    document.querySelector('.final').style.display = "flex"
+    document.getElementById('pontos').innerHTML = `${score}`
     erros = 0;
     tentativasErradasPerguntaAtual = 0; // Contador de tentativas erradas para a pergunta atual
 }
@@ -106,6 +108,7 @@ function selecionaResposta(e){
     if(eCorreto){
         selecionaBtn.classList.add("correto");
         score = score + 10;
+        document.getElementById('pontos').innerHTML = score
         Array.from(questoes.children).forEach(botoes => {
             if(botoes.dataset.correto === "true"){
                 botoes.classList.add("correto");
@@ -144,10 +147,11 @@ function selecionaResposta(e){
 
 function mostrarScore(){
     resetaTudo();
-    elementoPergunta.innerHTML = `Parabéns! Você conseguiu!`;
+    elementoPergunta.innerHTML = `Parabéns! Você completou o quiz!`;
     proximo.innerHTML = "Refazer Quiz";
     proximo.style.display = "Block";
     imagemPergunta.style.display = "none"
+    document.querySelector('.final').style.display = "none"
 }
 
 function tocarProximoBotao(){
