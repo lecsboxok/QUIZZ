@@ -133,6 +133,7 @@ function selecionaResposta(e){
                 }
                 botoes.disabled = true;
             });
+            alert("Suas tentativas acabaram! Recomeçar quiz.");
             setTimeout(() => {
                 comecaQuiz();
             }, 1800); 
