@@ -165,7 +165,6 @@ function tocarProximoBotao(){
             mostrarScore();
         }
     }
-
 }
 
 proximo.addEventListener("click", ()=>{
