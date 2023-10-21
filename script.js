@@ -69,6 +69,7 @@ function comecaQuiz() {
     mostrarPerguntas();
     imagemPergunta.style.display ="block";
     document.querySelector('.final').style.display = "flex"
+    document.querySelector('.texto').style.background = " #fff"
     document.getElementById('pontos').innerHTML = `${score}`
     erros = 0;
     tentativasErradasPerguntaAtual = 0; // Contador de tentativas erradas para a pergunta atual
@@ -152,6 +153,7 @@ function mostrarScore(){
     proximo.style.display = "Block";
     imagemPergunta.style.display = "none"
     document.querySelector('.final').style.display = "none"
+    document.querySelector('.texto').style.background = "#3BAED9"
 }
 
 function tocarProximoBotao(){
